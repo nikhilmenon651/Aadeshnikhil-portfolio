@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Aadesh Nikhil Menon - Personal Portfolio</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); min-height: 100vh; }
+        header { background: rgba(0, 0, 0, 0.95); padding: 20px 0; box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3); position: sticky; top: 0; z-index: 100; border-bottom: 3px solid #d4af37; }
+        nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+        .logo { font-size: 24px; font-weight: bold; color: #d4af37; text-transform: uppercase; letter-spacing: 2px; }
+        nav ul { list-style: none; display: flex; gap: 15px; flex-wrap: wrap; }
+        nav a { text-decoration: none; color: #fff; transition: color 0.3s; font-weight: 500; font-size: 13px; }
+        nav a:hover { color: #d4af37; }
+        .hero { max-width: 1200px; margin: 60px auto; padding: 0 20px; text-align: center; color: white; }
+        .hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .hero-photo { position: relative; }
+        .hero-photo img { width: 100%; max-width: 400px; border-radius: 10px; border: 4px solid #d4af37; box-shadow: 0 10px 40px rgba(212, 175, 55, 0.4); transition: transform 0.3s; }
+        .hero-photo img:hover { transform: scale(1.05); }
+        .hero-text h1 { font-size: 48px; margin-bottom: 10px; color: #d4af37; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .hero-text .subtitle { font-size: 24px; margin-bottom: 20px; color: #ff4444; font-weight: bold; }
+        .hero-text .location { font-size: 16px; margin-bottom: 30px; opacity: 0.9; }
+        .cta-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 12px 30px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; transition: all 0.3s; text-decoration: none; display: inline-block; font-weight: bold; }
+        .btn-primary { background: #d4af37; color: #000; }
+        .btn-primary:hover { background: #ff4444; color: #fff; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4); }
+        .btn-secondary { background: transparent; color: #d4af37; border: 2px solid #d4af37; }
+        .btn-secondary:hover { background: #d4af37; color: #000; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        section { background: rgba(255, 255, 255, 0.95); margin: 30px auto; padding: 40px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.3); border-left: 5px solid #d4af37; }
+        h2 { color: #000; margin-bottom: 30px; font-size: 32px; border-bottom: 3px solid #d4af37; padding-bottom: 10px; }
+        h3 { color: #d4af37; margin-top: 25px; margin-bottom: 15px; font-size: 20px; }
+        .highlight-box { background: linear-gradient(135deg, #fff9e6 0%, #fff5cc 100%); padding: 30px; border-radius: 8px; border-left: 5px solid #ff4444; margin-bottom: 30px; line-height: 1.9; }
+        .highlight-box h3 { color: #d4af37; margin-bottom: 15px; font-size: 20px; margin-top: 0; }
+        .highlight-box p { color: #333; margin-bottom: 10px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .stat-card { background: linear-gradient(135deg, #fff9e6 0%, #fff5cc 100%); padding: 25px; border-radius: 8px; text-align: center; border: 2px solid #d4af37; }
+        .stat-card .number { font-size: 36px; font-weight: bold; color: #ff4444; margin-bottom: 10px; }
+        .stat-card .label { color: #333; font-weight: bold; font-size: 14px; }
+        .companies-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-top: 20px; }
+        .company-badge { background: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 100%); padding: 15px; border-radius: 8px; text-align: center; border: 2px solid #d4af37; font-weight: bold; color: #333; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 30px; }
+        .service-box { background: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 100%); padding: 25px; border-radius: 8px; border-left: 5px solid #ff4444; transition: all 0.3s; }
+        .service-box:hover { box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3); transform: translateY(-5px); }
+        .service-box h4 { color: #d4af37; margin-bottom: 15px; font-size: 18px; display: flex; align-items: center; gap: 10px; }
+        .service-box .icon { font-size: 24px; }
+        .service-box ul { list-style: none; padding-left: 0; }
+        .service-box li { padding: 8px 0; color: #555; border-bottom: 1px solid #eee; }
+        .service-box li:last-child { border-bottom: none; }
+        .service-box li:before { content: "✓ "; color: #ff4444; font-weight: bold; margin-right: 8px; }
+        .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .expertise-card { background: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 100%); padding: 20px; border-radius: 8px; border-left: 4px solid #ff4444; }
+        .expertise-card h4 { color: #d4af37; margin-bottom: 10px; font-size: 16px; }
+        .expertise-card p { color: #555; font-size: 14px; line-height: 1.6; }
+        .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .skill-card { background: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 100%); padding: 20px; border-radius: 8px; border-left: 4px solid #ff4444; transition: all 0.3s; }
+        .skill-card:hover { box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2); transform: translateY(-5px); }
+        .skill-card h3 { color: #d4af37; margin-bottom: 10px; font-size: 16px; margin-top: 0; }
+        .skill-card ul { list-style: none; padding-left: 0; }
+        .skill-card li { padding: 5px 0; color: #333; }
+        .skill-card li:before { content: "▸ "; color: #ff4444; margin-right: 8px; font-weight: bold; }
+        .experience-item { margin-bottom: 30px; padding-bottom: 30px; border-bottom: 2px solid #d4af37; }
+        .experience-item:last-child { border-bottom: none; }
+        .experience-item h3 { color: #000; font-size: 20px; margin-bottom: 5px; margin-top: 0; }
+        .experience-item .company { color: #ff4444; font-weight: bold; margin-bottom: 5px; font-size: 16px; }
+        .experience-item .duration { color: #d4af37; font-size: 14px; margin-bottom: 10px; font-weight: bold; }
+        .experience-item p { color: #555; }
+        .awards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+        .award-badge { background: linear-gradient(135deg, #fff9e6 0%, #fff5cc 100%); padding: 15px; border-radius: 8px; text-align: center; border: 2px solid #d4af37; }
+        .award-badge .icon { font-size: 32px; margin-bottom: 10px; }
+        .award-badge p { color: #333; font-weight: bold; font-size: 14px; }
+        .social-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
+        .social-links a { display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: #d4af37; color: #000; border-radius: 50%; text-decoration: none; transition: all 0.3s; font-size: 20px; font-weight: bold; }
+        .social-links a:hover { background: #ff4444; color: #fff; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255, 68, 68, 0.4); }
+        footer { background: #000; color: #d4af37; text-align: center; padding: 30px; margin-top: 60px; border-top: 3px solid #d4af37; }
+        footer p { margin: 5px 0; }
+        @media (max-width: 768px) { .hero-content { grid-template-columns: 1fr; } nav ul { gap: 10px; } nav a { font-size: 11px; } .hero-text h1 { font-size: 32px; } .hero-text .subtitle { font-size: 18px; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">AN</div>
+            <ul>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#philosophy">Philosophy</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-photo">
+                <img src="https://lindy.nyc3.digitaloceanspaces.com/user-content/prod/owners/690a31f89b0ebec239036248/attachments/075960e7-c436-4104-83e7-af816a1e07c4-My%20guitar%20chicage%20pic%20-2nd.jpeg" alt="Dr. Aadesh Nikhil Menon">
+            </div>
+            <div class="hero-text">
+                <h1>Dr. Aadesh Nikhil Menon</h1>
+                <p class="subtitle">Sr. Account Manager | HR Professional | Model & Actor</p>
+                <p class="location">📍 Chicago, Illinois, USA</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="https://www.linkedin.com/in/dr-aadesh-nikhil-menon-15863b11" class="btn btn-secondary">View LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="container">
+        <section id="services">
+            <h2>Comprehensive Service Portfolio</h2>
+            <div class="highlight-box">
+                <h3>🎯 PhD-Certified Excellence</h3>
+                <p>With <strong>10,000+ candidates trained globally</strong> across IT consulting, communication training, and entertainment, I bring world-class expertise to every engagement. Trusted by <strong>Fortune 500 companies</strong> including HP, IBM, Capgemini, ITC Infotech, and Apollo Hospitals.</p>
+                <p>Recognized with the <strong>Abdul Kalam Award</strong> and as <strong>Mr. India 2023 Finalist</strong> for excellence in cultural and professional domains, combining corporate mastery with creative achievement.</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="number">10,000+</div>
+                    <div class="label">Professionals Trained</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">15+</div>
+                    <div class="label">Years Experience</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">50+</div>
+                    <div class="label">Team Members Led</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">5</div>
+                    <div class="label">Fortune 500 Companies</div>
+                </div>
+            </div>
+            
+            <h3>Trusted by Industry Leaders</h3>
+            <div class="companies-grid">
+                <div class="company-badge">HP</div>
+                <div class="company-badge">IBM</div>
+                <div class="company-badge">Capgemini</div>
+                <div class="company-badge">ITC Infotech</div>
+                <div class="company-badge">Apollo Hospitals</div>
+            </div>
+            
+            <h3 style="margin-top: 40px;">My Service Offerings</h3>
+            <div class="services-grid">
+                <div class="service-box">
+                    <h4><span class="icon">🎬</span> Entertainment & Modeling</h4>
+                    <ul>
+                        <li>Pageantry & Ramp Walk</li>
+                        <li>State and national pageant shows</li>
+                        <li>Mr. India 2023 Finalist</li>
+                        <li>South Indian Cinema (Tamil & Kannada)</li>
+                        <li>Acting in movies and TV serials</li>
+                        <li>Brand Ambassador & Commercial Modeling</li>
+                        <li>Brand endorsements & promotional representation</li>
+                    </ul>
+                </div>
+                
+                <div class="service-box">
+                    <h4><span class="icon">🗣️</span> Communication Training</h4>
+                    <ul>
+                        <li>English Speaking & Grammar</li>
+                        <li>Sentence construction & articulation</li>
+                        <li>Accent Neutralization</li>
+                        <li>Voice Modulation & Pronunciation</li>
+                        <li>US/UK Culture Training</li>
+                        <li>Corporate & BPO Training</li>
+                        <li>Interview Preparation</li>
+                        <li>Personality Development</li>
+                    </ul>
+                </div>
+                
+                <div class="service-box">
+                    <h4><span class="icon">💼</span> IT & Business Consulting</h4>
+                    <ul>
+                        <li>US IT Recruitment & RPO</li>
+                        <li>Full-cycle recruitment management</li>
+                        <li>Team leadership (50+ members)</li>
+                        <li>Client Relationship Management (CRM)</li>
+                        <li>Customer Success Management (CSM)</li>
+                        <li>Strategic partnerships</li>
+                        <li>Resource & Talent Management</li>
+                        <li>H1-B Processing & Bench Marketing</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="philosophy">
+            <h2>Professional Philosophy</h2>
+            <div class="highlight-box">
+                <h3>Where Expertise Meets Excellence</h3>
+                <p>With <strong>15+ years of experience</strong> spanning IT consulting, recruitment management, and communication training, I've successfully trained <strong>10,000+ candidates</strong> across the country and globally through online/virtual and face-to-face sessions in IT companies, BPO, KPO, call centers, non-IT sectors, manufacturing, colleges, universities, and Apollo Hospitals.</p>
+                <p>Backed by prestigious certifications including <strong>PhD in English, PMP, PHR, Six Sigma Black Belt, CSR, and CRM</strong>, I was honored with the <strong>Abdul Kalam Award</strong> and recognized as <strong>Mr. India 2023 Finalist</strong>, combining corporate excellence with creative achievement.</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>Comprehensive Expertise</h3>
+                <p>Managing teams of <strong>50+ members</strong>, I've handled full-cycle recruitment for Fortune 500 companies including <strong>HP, IBM, Capgemini, ITC Infotech, and Apollo Hospitals</strong>. My expertise spans US IT Recruitment, CRM, CSM, and transformative communication training covering English speaking, grammar, accent neutralization, voice modulation, sentence construction, personality development, interview preparation, and US/UK culture training.</p>
+                <p>From pageant stages to corporate boardrooms, I deliver comprehensive training programs both online/virtual and face-to-face, specializing in soft skills for IT professionals, MBA students, corporate teams, and BPO/KPO/RPO sectors.</p>
+            </div>
+        </section>
+        
+        <section id="expertise">
+            <h2>Core Expertise Areas</h2>
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <h4>🎯 Recruitment & HR</h4>
+                    <p>Full-cycle recruitment for Fortune 500 companies. Team management of 50+ members. HR operations and staffing solutions.</p>
+                </div>
+                <div class="expertise-card">
+                    <h4>💼 Customer Success</h4>
+                    <p>Account management, client relations, strategic partnerships, and business development for enterprise clients.</p>
+                </div>
+                <div class="expertise-card">
+                    <h4>🗣️ Communication Training</h4>
+                    <p>English speaking, accent neutralization, voice modulation, interview prep, and personality development for 10,000+ professionals.</p>
+                </div>
+                <div class="expertise-card">
+                    <h4>🏢 Industry Experience</h4>
+                    <p>IT, BPO, KPO, Call Centers, Manufacturing, Healthcare (Apollo Hospitals), Colleges & Universities.</p>
+                </div>
+                <div class="expertise-card">
+                    <h4>🌍 Global Reach</h4>
+                    <p>Online/virtual and face-to-face training delivery. US/UK culture training. International recruitment expertise.</p>
+                </div>
+                <div class="expertise-card">
+                    <h4>🎬 Creative Excellence</h4>
+                    <p>Model, actor, and content creator. South Indian film industry experience. Entertainment & media expertise.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            <div class="experience-item">
+                <h3>Sr. Account Manager / Customer Success Manager</h3>
+                <div class="company">Agilite Group</div>
+                <div class="duration">Current Position</div>
+                <p>Leading customer success initiatives and account management for enterprise clients. Driving operational excellence and strategic partnerships.</p>
+            </div>
+            <div class="experience-item">
+                <h3>HR Operations & Recruitment Specialist</h3>
+                <div class="company">Fortune 500 Companies (HP, IBM, Capgemini, ITC Infotech, Apollo Hospitals)</div>
+                <div class="duration">15+ Years</div>
+                <p>Managed full-cycle recruitment operations for major corporations. Led teams of 50+ members. Handled US IT recruitment and staffing solutions. Trained 10,000+ professionals across multiple sectors.</p>
+            </div>
+            <div class="experience-item">
+                <h3>Communication & Soft Skills Trainer</h3>
+                <div class="company">Multiple Organizations & Institutions</div>
+                <div class="duration">Active</div>
+                <p>Delivered comprehensive training programs in English speaking, accent neutralization, interview preparation, personality development, and US/UK culture training. Served IT professionals, MBA students, BPO/KPO sectors, and corporate teams.</p>
+            </div>
+            <div class="experience-item">
+                <h3>Model & Actor</h3>
+                <div class="company">Entertainment Industry</div>
+                <div class="duration">Active</div>
+                <p>Recognized as Mr. India - Mr. Perfect 2023-24 finalist. Active in South Indian film industry and entertainment projects. Content creator across multiple platforms.</p>
+            </div>
+            
+            <h3 style="margin-top: 30px;">Awards & Recognition</h3>
+            <div class="awards">
+                <div class="award-badge">
+                    <div class="icon">🏆</div>
+                    <p>Abdul Kalam Award</p>
+                </div>
+                <div class="award-badge">
+                    <div class="icon">👑</div>
+                    <p>Mr. India 2023 Finalist</p>
+                </div>
+                <div class="award-badge">
+                    <div class="icon">🎓</div>
+                    <p>Ph.D. in English</p>
+                </div>
+                <div class="award-badge">
+                    <div class="icon">⭐</div>
+                    <p>10,000+ Professionals Trained</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="skills">
+            <h2>Core Competencies</h2>
+            <div class="skills">
+                <div class="skill-card">
+                    <h3>HR & Recruitment</h3>
+                    <ul>
+                        <li>Full-Cycle Recruitment</li>
+                        <li>HR Operations</li>
+                        <li>Staffing Solutions</li>
+                        <li>Talent Management</li>
+                        <li>Team Leadership (50+ members)</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Customer Success</h3>
+                    <ul>
+                        <li>Account Management</li>
+                        <li>Client Relations</li>
+                        <li>Strategic Partnerships</li>
+                        <li>Operations Management</li>
+                        <li>Business Development</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Communication Training</h3>
+                    <ul>
+                        <li>English Speaking</li>
+                        <li>Accent Neutralization</li>
+                        <li>Interview Preparation</li>
+                        <li>Personality Development</li>
+                        <li>US/UK Culture Training</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Professional Skills</h3>
+                    <ul>
+                        <li>Project Management</li>
+                        <li>Leadership</li>
+                        <li>Strategic Planning</li>
+                        <li>Six Sigma Black Belt</li>
+                        <li>CRM & CSM</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Industry Expertise</h3>
+                    <ul>
+                        <li>IT & Technology</li>
+                        <li>BPO/KPO/RPO</li>
+                        <li>Healthcare</li>
+                        <li>Manufacturing</li>
+                        <li>Education</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Creative & Media</h3>
+                    <ul>
+                        <li>Modeling</li>
+                        <li>Acting</li>
+                        <li>Content Creation</li>
+                        <li>Public Speaking</li>
+                        <li>Entertainment</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <p style="text-align: center; margin-bottom: 20px; color: #333;">I'm always interested in connecting with professionals and exploring new opportunities in recruitment, training, entertainment, and business development.</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/dr-aadesh-nikhil-menon-15863b11" title="LinkedIn">in</a>
+                <a href="https://www.instagram.com/nikhil.menon.526438/" title="Instagram">📷</a>
+                <a href="https://www.youtube.com/@aadeshnikhilentertainment/shorts" title="YouTube">▶</a>
+                <a href="https://www.facebook.com/nikhil.menon.526438/" title="Facebook">f</a>
+                <a href="https://www.tiktok.com/@aadeshnikhil" title="TikTok">♪</a>
+                <a href="mailto:nikhilmenon651@gmail.com" title="Email">✉</a>
+            </div>
+            <p style="text-align: center; margin-top: 30px; color: #333;">
+                <strong>Email:</strong> nikhilmenon651@gmail.com<br>
+                <strong>Location:</strong> Chicago, Illinois, USA
+            </p>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Dr. Aadesh Nikhil Menon. All rights reserved.</p>
+        <p>HR Professional | Trainer | Model | Actor | Innovator | Excellence in Every Engagement</p>
+    </footer>
+</body>
+</html>
